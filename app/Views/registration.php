@@ -2,6 +2,13 @@
     <?php print_r($_REQUEST); ?>
 </pre> -->
 
+
+<?php
+
+// if ($validation->hasError('firstname')) {
+//     echo $validation->getError('firstname');
+// }
+?>
 <!DOCTYPE html>
 <html>
 
@@ -65,8 +72,10 @@
                             </span>
                         </div>
                         <!-- -------------- /Panel Heading -------------- -->
+                        <?= $validation->listErrors() ?>
 
-                        <form method="post" action="/register" id="form-register">
+                        <?= form_open('/register',"id='form-register'") ?>
+                        <!-- <form method="post" action="/register" id="form-register"> -->
                             <div class="panel-body pn">
                                 <div class="section row">
                                     <div class="col-md-6 ph10">
@@ -76,6 +85,8 @@
                                                 <i class="fa fa-user"></i>
                                             </label>
                                         </label>
+                                        <!-- <em for="" class="state-error">
+                                        <?= $validation->hassErrors('firstname') ? $validation->getError('firstname'):""; ?></em>     -->
                                     </div>
                                     <!-- -------------- /section -------------- -->
 
@@ -93,8 +104,8 @@
                                 <!-- date picker section -->
                                 <div class="section row">
                                     <div class="col-md-6 ph10">
-                                        <label for="datepicker1" class="field prepend-icon">
-                                            <input type="text" id="datepicker1" name="datepicker1" class="gui-input" placeholder="Datepicker Popup">
+                                        <label for="dob" class="field prepend-icon">
+                                            <input type="text" id="dob" name="dob" class="gui-input" placeholder="Datepicker Popup">
                                             <label class="field-icon">
                                                 <i class="fa fa-calendar"></i>
                                             </label>
@@ -134,18 +145,12 @@
                                 </div>
                                 <div class="section row">
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label">Gender : </label>
-
-                                        <div class="col-md-9">
-                                            <div class="bs-component">
-                                                <label class="radio-inline mr10">
-                                                    <input type="radio" name="gender" id="inlineRadio1" value="male">male
-                                                </label>
-                                                <label class="radio-inline mr10">
-                                                    <input type="radio" name="gender" id="inlineRadio2" value="female">female
-                                                </label>
-
-                                            </div>
+                                        <div class="col-md-12 ph10">
+                                            <select class="form-control" aria-placeholder="Gender" name="gender">
+                                                    <option value>Select Gender</option>
+                                                    <option value="m">male</option>
+                                                    <option value="f">female</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -191,8 +196,8 @@
                                         </div>
                                     </div>
                                     <div class="pull-right">
-                                        <button type="submit" class="btn btn-bordered btn-primary">I Accept - Create Account
-                                        </button>
+                                        <input type="submit" class="btn btn-bordered btn-primary" value="I Accept - Create Account" name="registerSubmit">
+                                        
                                     </div>
                                 </div>
                                 <!-- -------------- /section -------------- -->
@@ -203,7 +208,7 @@
 
                             </div>
                             <!-- -------------- /Panel Footer -------------- -->
-                        </form>
+                        <?= form_close() ?>
                     </div>
                 </div>
                 <!-- -------------- /Spec Form -------------- -->

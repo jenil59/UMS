@@ -14,9 +14,35 @@ class AccessController extends BaseController
     {
         return view('login');
     }
+    public function registration()
+    {
+        return view('/registration');
+
+    }
     public function register()
     {
-        return view('registration');
+        // if($this->input-)
+        $validation=$this->validate([
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'dob'=>'required',
+            'mobile'=>'required',
+            'branch'=>'required',
+            'smester'=>'required',
+            'gender'=>'required',
+            'email'=>'required',
+            'password'=>'required',
+            'confirmPassword'=>'required'
+
+        ]);
+
+        if(!$validation){
+
+            return view('/registration',['validation'=>$this->validator]);
+
+        }
+
+
     }
 
     public function about(){
