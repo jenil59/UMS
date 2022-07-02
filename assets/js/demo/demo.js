@@ -564,10 +564,10 @@ var Demo = function() {
 
   return {
     init: function() {
-      runDemoForms();
-      runDemoTopbar();
-      runDemoSourceCode();
-      runDemoSettings();
+      // runDemoForms();
+      // runDemoTopbar();
+      // runDemoSourceCode();
+      // runDemoSettings();
       runFullscreenDemo();
     }
   }

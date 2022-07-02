@@ -187,6 +187,8 @@
 
         });
 
+        $("#allcp-form").click(alert("hi"))
+
 
         // Cache DOM
         var pageHeader = $('.content-header').find('b');
