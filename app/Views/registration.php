@@ -1,10 +1,32 @@
-<!-- <pre>
-    <?php print_r($_REQUEST); ?>
-</pre> -->
+
+
 
 
 <?php
+$validation = \Config\Services::validation();
 
+  echo  $validation->getError('firstname');
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+// $validation = \Config\Services::validation();
 // if ($validation->hasError('firstname')) {
 //     echo $validation->getError('firstname');
 // }
@@ -40,6 +62,11 @@
         .select2-container--default .select2-selection--single{
             background: #ffffff;
         }
+        .field-icon{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 
 </head>
@@ -72,31 +99,35 @@
                             </span>
                         </div>
                         <!-- -------------- /Panel Heading -------------- -->
-                        <?= $validation->listErrors() ?>
 
                         <?= form_open('/register',"id='form-register'") ?>
                         <!-- <form method="post" action="/register" id="form-register"> -->
                             <div class="panel-body pn">
                                 <div class="section row">
                                     <div class="col-md-6 ph10">
-                                        <label for="firstname" class="field prepend-icon">
-                                            <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="First name...">
+                                        <label for="firstname" class="field prepend-icon <?= $validation->hasError('firstname') ? "state-error":"" ?>">
+                                            <input type="text" name="firstname" id="firstname" value="<?= set_value('firstname')?>" class="gui-input" placeholder="First name...">
                                             <label for="firstname" class="field-icon">
                                                 <i class="fa fa-user"></i>
                                             </label>
                                         </label>
-                                        <!-- <em for="" class="state-error">
-                                        <?= $validation->hassErrors('firstname') ? $validation->getError('firstname'):""; ?></em>     -->
+                                        <em for="" class="state-error">
+                                            <?=  $validation->hasError('firstname') ? $validation->getError('firstname'):"" ?>
+                                        </em> 
                                     </div>
                                     <!-- -------------- /section -------------- -->
 
                                     <div class="col-md-6 ph10">
-                                        <label for="lastname" class="field prepend-icon">
-                                            <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="Last name...">
+                                        <label for="lastname" class="field prepend-icon <?= $validation->hasError('lastname') ? "state-error":"" ?>">
+                                            <input type="text" name="lastname" id="lastname" value="<?= set_value('lastname')?>" class="gui-input" placeholder="Last name...">
                                             <label for="lastname" class="field-icon">
                                                 <i class="fa fa-user"></i>
                                             </label>
                                         </label>
+                                        
+                                        <em for="" class="state-error">
+                                            <?= $validation->hasError('lastname') ? $validation->getError('lastname'):"" ?>
+                                        </em> 
                                     </div>
                                     <!-- -------------- /section -------------- -->
                                 </div>
@@ -104,86 +135,115 @@
                                 <!-- date picker section -->
                                 <div class="section row">
                                     <div class="col-md-6 ph10">
-                                        <label for="dob" class="field prepend-icon">
-                                            <input type="text" id="dob" name="dob" class="gui-input" placeholder="Datepicker Popup">
+                                        <label for="dob" class="field prepend-icon <?= $validation->hasError('dob') ? "state-error":"" ?>">
+                                            <input type="date" id="dob" name="dob" value="<?= set_value('dob')?>" class="gui-input" placeholder="Datepicker Popup">
                                             <label class="field-icon">
                                                 <i class="fa fa-calendar"></i>
                                             </label>
                                         </label>
+                                        <em for="" class="state-error">
+                                            <?= $validation->hasError('dob') ? $validation->getError('dob'):"" ?>
+                                        </em> 
                                     </div>
                                     <div class="col-md-6 ph10">
-                                        <label for="mobile" class="field prepend-icon">
-                                            <input type="tel" name="mobile" id="mobile" class="gui-input" placeholder="Telephone / moble number">
+                                        <label for="mobile" class="field prepend-icon <?= $validation->hasError('mobile') ? "state-error":"" ?>">
+                                            <input type="tel" name="mobile" id="mobile" value="<?= set_value('mobile')?>" class="gui-input" placeholder="Telephone / moble number">
                                             <label for="mobile" class="field-icon">
                                                 <i class="fa fa-phone-square"></i>
                                             </label>
                                         </label>
+                                        <em for="" class="state-error">
+                                            <?= $validation->hasError('mobile') ? $validation->getError('mobile'):"" ?>
+                                        </em> 
                                     </div>
                                 </div>
                                 <div class="section row">
                                     <div class="col-md-6 ph10">
-                                        <select class="select2-single form-control">
+                                        <label for="" class="feild select <?= $validation->hasError('branch') ? "state-error":"" ?>">
+                                        <select class="select2-single form-control"  value="<?= set_value('branch')?>" name="branch">
                                             <option value="">Select Your Branch</option>
-                                            <option value="16">16 -  INFORMATION TECHNOLOGY</option>
-                                            <option value="09">09 -  ELECTRICAL ENGINEERING</option>
-                                            <option value="31">31 -  COMPUTER SCIENCE & ENGINEERING</option>
-                                        </select>
+                                            <option value="16" <?= set_value('branch')==16 ? "selected":"" ?> >16 -  INFORMATION TECHNOLOGY</option>
+                                            <option value="9" <?= set_value('branch')==9 ? "selected":"" ?> >09 -  ELECTRICAL ENGINEERING</option>
+                                            <option value="31" <?= set_value('branch')==31 ? "selected":"" ?> >31 -  COMPUTER SCIENCE & ENGINEERING</option>
+                                        </select></label>
+                                        <em for="" class="state-error">
+                                            <?= $validation->hasError('branch') ? $validation->getError('branch'):"" ?>
+                                        </em> 
                                     </div>
                                     <div class="col-md-6 ph10">
+                                    <label for="" class="feild select <?= $validation->hasError('semester') ? "state-error":"" ?>">
+
                                     <select class="form-control" name="semester">
                                                 <option value>Select Your Semester</option>
-                                                <option value="1">sem 1</option>
-                                                <option value="2">sem 2</option>
-                                                <option value="3">sem 3</option>
-                                                <option value="4">sem 4</option>
-                                                <option value="5">sem 5</option>
-                                                <option value="6">sem 6</option>
-                                                <option value="7">sem 7</option>
-                                                <option value="8">sem 8</option>
+                                                <option value="1" <?= set_value('semester')==1 ? "selected":"" ?>>sem 1</option>
+                                                <option value="2" <?= set_value('semester')==2 ? "selected":"" ?>>sem 2</option>
+                                                <option value="3" <?= set_value('semester')==3 ? "selected":"" ?>>sem 3</option>
+                                                <option value="4" <?= set_value('semester')==4 ? "selected":"" ?>>sem 4</option>
+                                                <option value="5" <?= set_value('semester')==5 ? "selected":"" ?>>sem 5</option>
+                                                <option value="6" <?= set_value('semester')==6 ? "selected":"" ?>>sem 6</option>
+                                                <option value="7" <?= set_value('semester')==7 ? "selected":"" ?>>sem 7</option>
+                                                <option value="8" <?= set_value('semester')==8 ? "selected":"" ?>>sem 8</option>
                                             </select>
+                                    </label>
+                                    <em for="" class="state-error">
+                                            <?= $validation->hasError('semester') ? $validation->getError('semester'):"" ?>
+                                        </em> 
                                     </div>
                                 </div>
                                 <div class="section row">
-                                    <div class="form-group">
                                         <div class="col-md-12 ph10">
+                                    <label for="" class="feild select <?= $validation->hasError('gender') ? "state-error":"" ?>">
+                                            
                                             <select class="form-control" aria-placeholder="Gender" name="gender">
                                                     <option value>Select Gender</option>
-                                                    <option value="m">male</option>
-                                                    <option value="f">female</option>
+                                                    <option value="m" <?= set_value('gender')=='m' ? "selected":"" ?> >male</option>
+                                                    <option value="f" <?= set_value('gender')=='f' ? "selected":"" ?> >female</option>
                                             </select>
+                                    </label>
+                                    <em for="" class="state-error">
+                                            <?= $validation->hasError('gender') ? $validation->getError('gender'):"" ?>
+                                        </em> 
                                         </div>
-                                    </div>
                                 </div>
                                 <!-- /section -->
                                 <div class="section">
-                                    <label for="email" class="field prepend-icon">
-                                        <input type="email" name="email" id="email" class="gui-input" placeholder="Email address">
+                                    <label for="email" class="field prepend-icon <?= $validation->hasError('email') ? "state-error":"" ?>">
+                                        <input type="email" name="email" id="email"  value="<?= set_value('email')?>"  class="gui-input" placeholder="Email address">
                                         <label for="email" class="field-icon">
                                             <i class="fa fa-envelope"></i>
                                         </label>
                                     </label>
+                                    <em for="" class="state-error">
+                                            <?= $validation->hasError('email') ? $validation->getError('email'):"" ?>
+                                        </em> 
                                 </div>
 
                                 <!-- -------------- /section -------------- -->
 
 
                                 <div class="section">
-                                    <label for="password" class="field prepend-icon">
+                                    <label for="password" class="field prepend-icon <?= $validation->hasError('password') ? "state-error":"" ?>">
                                         <input type="text" name="password" id="password" class="gui-input" placeholder="Create a password">
                                         <label for="password" class="field-icon">
                                             <i class="fa fa-lock"></i>
                                         </label>
                                     </label>
+                                    <em for="" class="state-error">
+                                            <?= $validation->hasError('password') ? $validation->getError('password'):"" ?>
+                                        </em> 
                                 </div>
                                 <!-- -------------- /section -------------- -->
 
                                 <div class="section">
-                                    <label for="confirmPassword" class="field prepend-icon">
+                                    <label for="confirmPassword" class="field prepend-icon <?= $validation->hasError('confirmPassword') ? "state-error":"" ?>">
                                         <input type="text" name="confirmPassword" id="confirmPassword" class="gui-input" placeholder="Retype your password">
                                         <label for="confirmPassword" class="field-icon">
                                             <i class="fa fa-unlock-alt"></i>
                                         </label>
                                     </label>
+                                    <em for="" class="state-error">
+                                            <?= $validation->hasError('confirmPassword') ? $validation->getError('confirmPassword'):"" ?>
+                                        </em> 
                                 </div>
                                 <!-- -------------- /section -------------- -->
 

@@ -42,6 +42,10 @@ $routes->match(['get', 'post'],'/register', 'AccessController::register');
 $routes->get('/aboutus', 'AccessController::about');
 $routes->get('/contact', 'AccessController::contact');
 
+// for student controller
+$routes->get("/student/", 'Student::index');
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
