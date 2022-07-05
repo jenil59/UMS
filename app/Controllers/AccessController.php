@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\LoginModel;
+
 class AccessController extends BaseController
 {
     public function index()
@@ -19,6 +21,7 @@ class AccessController extends BaseController
         return view('/registration');
 
     }
+    
     public function register()
     {
         // if($this->input-)
@@ -27,7 +30,7 @@ class AccessController extends BaseController
                 'label'=>'First Name',
                 'rules'=>'required',
                 'errors'=>[
-                    'required'=>'Please Enter Your Name',
+                    'required'=>'Please Enter Your First Name',
                 ]
             ],
             'lastname'=>[
@@ -94,6 +97,13 @@ class AccessController extends BaseController
                     'required'=>'Please Enter Your confirmPassword',
                     'matches' => 'Confirm password and password must be same.'
                 ]
+                ],
+            'agree'=>[
+                'label'=>'agree',
+                'rules'=>'required',
+                'error'=>[
+                    'required'=>'Mark this checkbox to continue '
+                    ]
             ]
 
         ]);
@@ -103,6 +113,26 @@ class AccessController extends BaseController
             return view('/registration',['validation'=>$this->validator]);
 
         }
+
+        
+        $p_data=$this->request->getPost();
+        
+        $data=[
+            'first_name'=>$this->request->getPost('firstname'),
+            'Last_Name'=>$this->request->getPost('lastname'),
+            'gender'=>$this->request->getPost('gender'),
+            'dob'=>$this->request->getPost('dob'),
+            'Mobile'=>$this->request->getPost('mobile'),
+            'Email'=>$this->request->getPost('email'),
+            'Pass'=>$this->request->getPost('password'),
+            'Branch'=>$this->request->getPost('branch'),
+            'Sem'=>$this->request->getPost('semester')
+        ];
+        var_dump($data);
+        
+        $login=new LoginModel();
+        // $login->insert();
+        
 
         return view("login");
 

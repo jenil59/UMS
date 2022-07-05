@@ -29,6 +29,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+         .field-icon{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 
 <body class="utility-page sb-l-c sb-r-c">
@@ -58,9 +66,9 @@
                             <div class="section">
                                 <label for="username" class="field prepend-icon">
                                     <input type="text" name="username" id="username" class="gui-input"
-                                           placeholder="Username">
+                                           placeholder="Email">
                                     <label for="username" class="field-icon">
-                                        <i class="fa fa-user"></i>
+                                        <i class="fa fa-envelope"></i>
                                     </label>
                                 </label>
                             </div>
@@ -84,7 +92,7 @@
                                         <label for="remember">Remember me</label>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-bordered btn-primary pull-right">Log in</button>
+                                <input type="submit" class="btn btn-bordered btn-primary pull-right" name="loginSubmit" value="Log in">
                             </div>
                             <!-- -------------- /section -------------- -->
 

@@ -1,36 +1,9 @@
 
-
-
-
 <?php
 $validation = \Config\Services::validation();
 
-  echo  $validation->getError('firstname');
-
 ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php
-// $validation = \Config\Services::validation();
-// if ($validation->hasError('firstname')) {
-//     echo $validation->getError('firstname');
-// }
-?>
 <!DOCTYPE html>
 <html>
 
@@ -136,7 +109,7 @@ $validation = \Config\Services::validation();
                                 <div class="section row">
                                     <div class="col-md-6 ph10">
                                         <label for="dob" class="field prepend-icon <?= $validation->hasError('dob') ? "state-error":"" ?>">
-                                            <input type="date" id="dob" name="dob" value="<?= set_value('dob')?>" class="gui-input" placeholder="Datepicker Popup">
+                                            <input type="text" id="dob" name="dob" value="<?= set_value('dob')?>" class="gui-input" placeholder="Datepicker Popup">
                                             <label class="field-icon">
                                                 <i class="fa fa-calendar"></i>
                                             </label>
@@ -250,10 +223,13 @@ $validation = \Config\Services::validation();
                                 <div class="section">
                                     <div class="pull-left mt10">
                                         <div class="checkbox-custom checkbox-primary mb5">
-                                            <input type="checkbox" checked="" id="agree">
+                                            <input type="checkbox"  name="agree" id="agree">
                                             <label for="agree">I agree to the
                                                 <a href="#"> terms of use. </a></label>
                                         </div>
+                                        <em for="" class="state-error text-danger">
+                                            <?= $validation->hasError('agree') ? $validation->getError('agree'):"" ?>
+                                        </em> 
                                     </div>
                                     <div class="pull-right">
                                         <input type="submit" class="btn btn-bordered btn-primary" value="I Accept - Create Account" name="registerSubmit">

@@ -32,10 +32,10 @@ class Database extends Config
      */
     public $default = [
         'DSN'      => '',
-        'hostname' => 'localhost',
-        'username' => '',
-        'password' => '',
-        'database' => '',
+        'hostname' => 'MYSQL8002.site4now.net',
+        'username' => 'a8926e_dbums',
+        'password' => 'jenil@ums@1234',
+        'database' => 'db_a8926e_dbums',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
