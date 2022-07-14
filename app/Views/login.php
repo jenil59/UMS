@@ -1,3 +1,12 @@
+
+<?php
+
+
+$validation = \Config\Services::validation();
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -36,14 +45,52 @@
             justify-content: center;
             align-items: center;
         }
+        #SuccessLoginMsg{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            width: 40%;
+            z-index: 1;
+            
+        }
+        
+        #ErrorLoginMsg{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            width: 40%;
+            z-index: 1;
+        }
+
     </style>
 </head>
 
 <body class="utility-page sb-l-c sb-r-c">
 
+
+
 <!-- -------------- Body Wrap  -------------- -->
 <div id="main" class="animated fadeIn">
-
+    <?php if(session()->getFlashdata('status')==1) {?>
+        <div id="SuccessLoginMsg" class="alert alert-sm alert-primary bg-gradient dark alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <i class="fa fa-cubes pr10 hidden"></i>
+            Claritas est etiam processus dynamicus and chive on.
+        </div>
+    <?php }
+     elseif(session()->getFlashdata('faildStatus')==1)
+     {
+        ?>
+        <div class="alert alert-danger light alert-dismissable" id="ErrorLoginMsg" style="display: block;">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            Invalid Username Or Password ! Try again 
+        </div>
+       <script>
+          $('#ErrorLoginMsg').fadeToggle();
+       </script>
+        <?php
+     }
+     ?>
     <!-- -------------- Main Wrapper -------------- -->
     <section id="content_wrapper">
 
@@ -59,29 +106,37 @@
                 <div class="text-center mb20"><img src="assets/img/logo_login_form.png" class="img-responsive"
                                                    alt="Logo"/></div>
                 <div class="panel mw320">
+                <?= form_open('/login',"id='form-login'") ?>
 
-                    <form method="post" action="/" id="form-login">
+                    <!-- <form method="post" action="/login" id="form-login"> -->
                         <div class="panel-body pn mv10">
 
                             <div class="section">
-                                <label for="username" class="field prepend-icon">
+                                <label for="username" class="field prepend-icon <?= $validation->hasError('username') ? "state-error":"" ?>">
                                     <input type="text" name="username" id="username" class="gui-input"
                                            placeholder="Email">
                                     <label for="username" class="field-icon">
                                         <i class="fa fa-envelope"></i>
                                     </label>
                                 </label>
+                                <em for="" class="state-error">
+                                    <?=  $validation->hasError('username') ? $validation->getError('username'):"" ?>
+                                </em> 
                             </div>
                             <!-- -------------- /section -------------- -->
 
                             <div class="section">
-                                <label for="password" class="field prepend-icon">
+                                <label for="password" class="field prepend-icon <?= $validation->hasError('password') ? "state-error":"" ?>">
                                     <input type="text" name="password" id="password" class="gui-input"
                                            placeholder="Password">
                                     <label for="password" class="field-icon">
                                         <i class="fa fa-lock"></i>
                                     </label>
+                                    
                                 </label>
+                                <em for="" class="state-error">
+                                    <?=  $validation->hasError('password') ? $validation->getError('password'):"" ?>
+                                </em> 
                             </div>
                             <!-- -------------- /section -------------- -->
 
@@ -94,7 +149,7 @@
                                 </div>
                                 <input type="submit" class="btn btn-bordered btn-primary pull-right" name="loginSubmit" value="Log in">
                             </div>
-                            <!-- -------------- /section -------------- -->
+                            <!-- -------------- /section -------------- --> 
 
                         </div>
                         <!-- -------------- /Form -------------- -->
@@ -146,6 +201,9 @@
                 y: window.innerHeight / 10
             }
         });
+
+
+
 
     });
 </script>

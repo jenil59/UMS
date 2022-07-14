@@ -1,0 +1,3 @@
+.upcoming-lec .table-responsive::after{
+    display: none;
+}

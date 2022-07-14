@@ -4,17 +4,28 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class LoginModel extends Model
+class StudentModel extends Model
 {
-    protected $table      = 'student_details';
+    protected $table      = 'tlb_student_details';
     protected $primaryKey = 'Enrollment';
 
-    protected $useAutoIncrement = true;
 
     protected $returnType     = 'array';
-    protected $useSoftDeletes = true;
+    // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['first_name','Last_Name','gender','dob','Mobile','Email','Pass','Branch','Sem'];
+    protected $allowedFields = [
+        'Enrollment',
+        'first_name',
+        'Last_Name',
+        'gender',
+        'dob',
+        'Mobile',
+        'Email',
+        'Pass',
+        'Branch',
+        'Sem',
+        'status'
+    ];
 
     protected $useTimestamps = false;
     protected $createdField  = 'created_at';
