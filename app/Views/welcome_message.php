@@ -211,8 +211,9 @@
             <li class="menu-item hidden"><a href="https://codeigniter4.github.io/userguide/" target="_blank">Docs</a>
             </li>
             <li class="menu-item hidden"><a href="https://forum.codeigniter.com/" target="_blank">Community</a></li>
-            <li class="menu-item hidden"><a href="/login" target="_blank">login</a></li>
+            <li class="menu-item hidden"><a href="/student_login" target="_blank">login</a></li>
             <li class="menu-item hidden"><a href="/registration" target="_blank">registration</a></li>
+            <li class="menu-item hidden"><a href="/teacher_login" target="_blank">teacher</a></li>
             <li class="menu-item hidden"><a
                     href="https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md" target="_blank">Contribute</a>
             </li>

@@ -36,16 +36,38 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->match(['get','post'],'/login', 'AccessController::login');
-$routes->get('/registration', 'AccessController::registration');
-$routes->match(['post'],'/register', 'AccessController::register');
 $routes->get('/aboutus', 'AccessController::about');
 $routes->get('/contact', 'AccessController::contact');
-$routes->get('/logout', 'AccessController::logout');
 
+$routes->get('logout', 'AccessController::logout');
+
+
+$routes->match(['get','post'],"/student_login", 'AccessController::student_login',['filter'=>'noauth']);
+$routes->match(['get','post'],"/teacher_login", 'AccessController::teacher_login',['filter'=>'noauth']);
+$routes->match(['post'],'/register', 'AccessController::register');
+$routes->get('/registration', 'AccessController::registration');
 // for student controller
-$routes->get("/student", 'Student::index');
 
+$routes->group("student",['filter'=>'auth'],function($routes){
+    $routes->get("/", 'Student::dashboard');
+    
+});
+
+
+// for teachers
+
+$routes->group("teacher",function($routes){
+
+    $routes->get("/", 'Instructor::dashboard');
+    $routes->get("/login", 'Instructor::login');
+    $routes->get("/getlogin", 'Instructor::getAccess');
+
+});
+
+// $routes->get("/teacher", 'Instructor::index');
+// $routes->get("/teacher/login", 'Instructor::login');
+// $routes->get("/teacher/getlogin", 'Instructor::getAccess');
+  
 
 /*
  * --------------------------------------------------------------------

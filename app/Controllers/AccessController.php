@@ -5,32 +5,29 @@ namespace App\Controllers;
 use App\Libraries\Hash;
 use App\Models\StudentModel;
 
-use function PHPUnit\Framework\isEmpty;
 
 class AccessController extends BaseController
 {
+
+    function __construct()
+    {
+        
+    }
     public function index()
     {
         return view('welcome_message');
     }
 
-    private function check_session($feild,$value)
-    {
-        $sess_data=session()->get('userdata');
-        return $sess_data[$feild]==$value;
-    }
     
-    public function login()
+    public function student_login()
     {
-        
-        if(session()->has('userdata'))
-        {
-           return  redirect()->to('/student');
-        }
-
+    
         if(count($this->request->getPost())==0){
-            return view('login');
+            return view('login',[
+                'role'=>'student_login'
+            ]);
         }
+  
 
         $validation=$this->validate([
             'username'=>[
@@ -54,7 +51,10 @@ class AccessController extends BaseController
 
         if(!$validation){
 
-            return view('/login',['validation'=>$this->validator]);
+            return view('login',[
+                'validation'=>$this->validator,
+                'role'=>'student_login'
+            ]);
 
         }
 
@@ -71,40 +71,116 @@ class AccessController extends BaseController
             if($rData==NULL)
             {
                 $session->setFlashdata('faildStatus','1');
-                return redirect()->to('/login')->withInput();
+                return redirect()->to('/student_login')->withInput();
             }
             $check=Hash::check_password($this->request->getPost('password'),$rData['Pass']);
-            var_dump($check);
+            
             if(!$check)
             {
                 $session->setFlashdata('faildStatus','1');
-                return redirect()->to('/login')->withInput();
+                return redirect()->to('/student_login')->withInput();
             }
+            $rData['role']='0';
+                      
             $session->set('userdata',$rData);
-           return redirect()->to('/student');
+
+            return redirect()->to('/student');
             
         }
 
-        return view('login');
+        return view('login',[
+            'role'=>'student_login'
+        ]);
        
     }
-    public function registration()
+
+    public function teacher_login()
     {
-        if(session()->has('userdata'))
-        {
-           return  redirect()->to('/student');
+        
+        if(count($this->request->getPost())==0){
+            return view('login',[
+                'role'=>'teacher_login'
+            ]);
+        }
+  
+
+        $validation=$this->validate([
+            'username'=>[
+                'label'=>'email',
+                'rules'=>'required|valid_email',
+                'errors'=>[
+                    'required'=>'Please Enter Your email',
+                    'valid_email'=>'Email Address Is not Valid'
+                ]
+            ],
+            'password'=>[
+                'label'=>'password',
+                'rules'=>'required',
+                'errors'=>[
+                    'required'=>'Please Enter Your password',
+                ]
+            ]
+
+
+        ]);
+
+        if(!$validation){
+
+            return view('login',[
+                'validation'=>$this->validator,
+                'role'=>'teacher_login'
+            ]);
+
         }
 
-        return view('/registration');
+
+        if($this->request->getPost('loginSubmit'))
+        {
+            $session=session();
+            $login =new StudentModel();
+            $login_condotion_array=[
+                'Email'=>$this->request->getPost('username'),
+                'Pass'=>$this->request->getPost('password')
+            ];
+            $rData=$login->where('Email',$this->request->getPost('username'))->first();
+            if($rData==NULL)
+            {
+                $session->setFlashdata('faildStatus','1');
+                return redirect()->to('/teacher_login')->withInput();
+            }
+            $check=Hash::check_password($this->request->getPost('password'),$rData['Pass']);
+            
+            if(!$check)
+            {
+                $session->setFlashdata('faildStatus','1');
+                return redirect()->to('/teacher_login')->withInput();
+            }
+            $rData['role']='0';
+                      
+            $session->set('userdata',$rData);
+
+            return redirect()->to('/teacher');
+            
+        }
+
+        return view('login',[
+            'role'=>'teacher_login'
+        ]);
+       
+
+    }
+
+
+    public function registration()
+    {
+
+        return view('registration');
 
     }
     
     public function register()
     {
-        if(session()->has('userdata'))
-        {
-           return  redirect()->to('/student');
-        }
+       
 
         
         $validation=$this->validate([
@@ -195,7 +271,7 @@ class AccessController extends BaseController
 
         if(!$validation){
 
-            return view('/registration',['validation'=>$this->validator]);
+            return view('registration',['validation'=>$this->validator]);
 
         }
 
@@ -212,13 +288,18 @@ class AccessController extends BaseController
             'Pass'=>$this->request->getPost('password'),
             'Branch'=>$this->request->getPost('branch'),
             'Sem'=>$this->request->getPost('semester'),
-            'Enrollment'=>190102
+            'Enrollment'=>190103
         ];
         $login=new StudentModel();
         $login->insert($data);
         $session=session();
         $session->setFlashdata('status', '1');
-        return redirect()->to('/login');
+        return redirect()->to('/student_login');
+    }
+
+    public function logout(){
+        session()->destroy();
+        return redirect('student_login');
     }
 
     public function about(){
@@ -230,11 +311,6 @@ class AccessController extends BaseController
     }
 
 
-    public function logout()
-    {
-        session()->destroy();
-        return redirect()->to('/login');
-    }
-
+   
 
 }

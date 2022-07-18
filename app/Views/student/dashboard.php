@@ -1,5 +1,18 @@
+<?php
+
+$UserName = session()->get('First_Name');
+
+session()->push('userdata', ['req_from' => $_SERVER['REDIRECT_URL']]);
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
+
+
 
 <head>
     <!-- -------------- Meta and Title -------------- -->
@@ -15,24 +28,24 @@
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
 
     <!-- -------------- Icomoon -------------- -->
-    <link rel="stylesheet" type="text/css" href="assets/fonts/icomoon/icomoon.css">
+    <link rel="stylesheet" type="text/css" href="/assets/fonts/icomoon/icomoon.css">
 
     <!-- -------------- FullCalendar -------------- -->
-    <link rel="stylesheet" type="text/css" href="assets/js/plugins/fullcalendar/fullcalendar.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/js/plugins/magnific/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="/assets/js/plugins/fullcalendar/fullcalendar.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/js/plugins/magnific/magnific-popup.css">
 
     <!-- -------------- Plugins -------------- -->
-    <link rel="stylesheet" type="text/css" href="assets/js/plugins/c3charts/c3.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/js/plugins/c3charts/c3.min.css">
 
     <!-- -------------- CSS - theme -------------- -->
-    <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/assets/skin/default_skin/css/theme.css">
 
     <!-- -------------- CSS - allcp forms -------------- -->
-    <link rel="stylesheet" type="text/css" href="assets/allcp/forms/css/forms.css">
-    <link rel="stylesheet" type="text/css" href="assets/custom styles/index.css">
+    <link rel="stylesheet" type="text/css" href="/assets/allcp/forms/css/forms.css">
+    <link rel="stylesheet" type="text/css" href="/assets/custom styles/index.css">
 
     <!-- -------------- Favicon -------------- -->
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" href="/assets/img/favicon.ico">
 
     <!-- -------------- IE8 HTML5 support  -------------- -->
     <!--[if lt IE 9]>
@@ -42,7 +55,11 @@
 
     <style>
         .bg-c {
-            background-color: grey;
+            /* background-color: grey; */
+        }
+
+        .d-none {
+            display: none !important;
         }
     </style>
 </head>
@@ -58,12 +75,12 @@
         <!-- -------------- Header  -------------- -->
         <header class="navbar navbar-fixed-top bg-dark">
             <div class="navbar-logo-wrapper">
-                <a class="navbar-logo-text" href="dashboard1.html">
+                <a class="navbar-logo-text" href="<?= base_url('/student') ?>">
                     <b>Alliance</b>
                 </a>
                 <span id="sidebar_left_toggle" class="ad ad-lines"></span>
             </div>
-            <ul class="nav navbar-nav navbar-left">
+            <ul class="nav navbar-nav navbar-left d-none">
                 <li class="dropdown dropdown-fuse hidden-xs">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown
                         <span class="fa fa-chevron-down"></span>
@@ -94,14 +111,14 @@
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li class="hidden-xs">
+                <li class="hidden-xs d-none">
                     <div class="navbar-btn btn-group">
                         <a href="#" class="topbar-dropmenu-toggle btn" data-toggle="button">
                             <span class="fa fa-magic fs20 text-info"></span>
                         </a>
                     </div>
                 </li>
-                <li class="dropdown dropdown-fuse">
+                <li class="dropdown dropdown-fuse d-none">
                     <div class="navbar-btn btn-group">
                         <button data-toggle="dropdown" class="btn dropdown-toggle">
                             <span class="fa fa-envelope fs20 text-danger"></span>
@@ -123,7 +140,7 @@
                                         <div id="nav-tab1" class="tab-pane active" role="tabpanel">
                                             <ul class="media-list" role="menu">
                                                 <li class="media">
-                                                    <a class="media-left" href="#"> <img src="assets/img/avatars/5.jpg" class="mw40 br2" alt="avatar">
+                                                    <a class="media-left" href="#"> <img src="/assets/img/avatars/5.jpg" class="mw40 br2" alt="avatar">
                                                     </a>
 
                                                     <div class="media-body">
@@ -135,7 +152,7 @@
                                                     </div>
                                                 </li>
                                                 <li class="media">
-                                                    <a class="media-left" href="#"> <img src="assets/img/avatars/2.jpg" class="mw40 br2" alt="avatar">
+                                                    <a class="media-left" href="#"> <img src="/assets/img/avatars/2.jpg" class="mw40 br2" alt="avatar">
                                                     </a>
 
                                                     <div class="media-body">
@@ -147,7 +164,7 @@
                                                     </div>
                                                 </li>
                                                 <li class="media">
-                                                    <a class="media-left" href="#"> <img src="assets/img/avatars/3.jpg" class="mw40 br2" alt="avatar">
+                                                    <a class="media-left" href="#"> <img src="/assets/img/avatars/3.jpg" class="mw40 br2" alt="avatar">
                                                     </a>
 
                                                     <div class="media-body">
@@ -159,7 +176,7 @@
                                                     </div>
                                                 </li>
                                                 <li class="media">
-                                                    <a class="media-left" href="#"> <img src="assets/img/avatars/4.jpg" class="mw40 br2" alt="avatar">
+                                                    <a class="media-left" href="#"> <img src="/assets/img/avatars/4.jpg" class="mw40 br2" alt="avatar">
                                                     </a>
 
                                                     <div class="media-body">
@@ -171,7 +188,7 @@
                                                     </div>
                                                 </li>
                                                 <li class="media">
-                                                    <a class="media-left" href="#"> <img src="assets/img/avatars/5.jpg" class="mw40 br2" alt="avatar">
+                                                    <a class="media-left" href="#"> <img src="/assets/img/avatars/5.jpg" class="mw40 br2" alt="avatar">
                                                     </a>
 
                                                     <div class="media-body">
@@ -183,7 +200,7 @@
                                                     </div>
                                                 </li>
                                                 <li class="media">
-                                                    <a class="media-left" href="#"> <img src="assets/img/avatars/2.jpg" class="mw40 br2" alt="avatar">
+                                                    <a class="media-left" href="#"> <img src="/assets/img/avatars/2.jpg" class="mw40 br2" alt="avatar">
                                                     </a>
 
                                                     <div class="media-body">
@@ -195,7 +212,7 @@
                                                     </div>
                                                 </li>
                                                 <li class="media">
-                                                    <a class="media-left" href="#"> <img src="assets/img/avatars/3.jpg" class="mw40 br2" alt="avatar">
+                                                    <a class="media-left" href="#"> <img src="/assets/img/avatars/3.jpg" class="mw40 br2" alt="avatar">
                                                     </a>
 
                                                     <div class="media-body">
@@ -212,7 +229,7 @@
                                             <div class="media">
                                                 <div class="media-left">
                                                     <a href="#">
-                                                        <img class="media-object" alt="64x64" src="assets/img/avatars/3.jpg">
+                                                        <img class="media-object" alt="64x64" src="/assets/img/avatars/3.jpg">
                                                     </a>
                                                 </div>
                                                 <div class="media-body">
@@ -234,14 +251,14 @@
                                                 </div>
                                                 <div class="media-right">
                                                     <a href="#">
-                                                        <img class="media-object" alt="64x64" src="assets/img/avatars/1.jpg">
+                                                        <img class="media-object" alt="64x64" src="/assets/img/avatars/1.jpg">
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="media">
                                                 <div class="media-left">
                                                     <a href="#">
-                                                        <img class="media-object" alt="64x64" src="assets/img/avatars/2.jpg">
+                                                        <img class="media-object" alt="64x64" src="/assets/img/avatars/2.jpg">
                                                     </a>
                                                 </div>
                                                 <div class="media-body">
@@ -264,14 +281,14 @@
                                                 </div>
                                                 <div class="media-right">
                                                     <a href="#">
-                                                        <img class="media-object" alt="64x64" src="assets/img/avatars/1.jpg">
+                                                        <img class="media-object" alt="64x64" src="/assets/img/avatars/1.jpg">
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="media">
                                                 <div class="media-left">
                                                     <a href="#">
-                                                        <img class="media-object" alt="64x64" src="assets/img/avatars/2.jpg">
+                                                        <img class="media-object" alt="64x64" src="/assets/img/avatars/2.jpg">
                                                     </a>
                                                 </div>
                                                 <div class="media-body">
@@ -292,7 +309,7 @@
                                                 </div>
                                                 <div class="media-right">
                                                     <a href="#">
-                                                        <img class="media-object" alt="64x64" src="assets/img/avatars/1.jpg">
+                                                        <img class="media-object" alt="64x64" src="/assets/img/avatars/1.jpg">
                                                     </a>
                                                 </div>
                                             </div>
@@ -457,7 +474,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="dropdown dropdown-fuse">
+                <li class="dropdown dropdown-fuse d-none">
                     <div class="navbar-btn btn-group">
                         <button data-toggle="dropdown" class="btn dropdown-toggle">
                             <span class="fa fa-bell fs20 text-primary"></span>
@@ -555,7 +572,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="dropdown dropdown-fuse">
+                <li class="dropdown dropdown-fuse d-none">
                     <div class="navbar-btn btn-group">
                         <button data-toggle="dropdown" class="btn btn-md dropdown-toggle">
                             EN
@@ -580,31 +597,10 @@
                             </name>
                         </span>
                         <span class="fa fa-caret-down hidden-xs mr15"></span>
-                        <img src="assets/img/avatars/profile_avatar.jpg" alt="avatar" class="mw55">
+                        <img src="/assets/img/avatars/profile_avatar.jpg" alt="avatar" class="mw55">
                     </a>
                     <ul class="dropdown-menu list-group keep-dropdown w250" role="menu">
-                        <li class="dropdown-header clearfix">
-                            <div class="pull-left ml10">
-                                <select id="user-status">
-                                    <optgroup label="Current Status:">
-                                        <option value="1-1">Away</option>
-                                        <option value="1-2">Busy</option>
-                                        <option value="1-3" selected="selected">Online</option>
-                                        <option value="1-4">Offline</option>
-                                    </optgroup>
-                                </select>
-                            </div>
 
-                            <div class="pull-right mr10">
-                                <select id="user-role">
-                                    <optgroup label="Logged in As:">
-                                        <option value="1-1" selected="selected">Admin</option>
-                                        <option value="1-2">Editor</option>
-                                        <option value="1-3">User</option>
-                                    </optgroup>
-                                </select>
-                            </div>
-                        </li>
                         <li class="list-group-item">
                             <a href="#" class="animated animated-short fadeInUp">
                                 <span class="fa fa-envelope-o"></span> Messages
@@ -648,53 +644,20 @@
                     <div class="sidebar-widget author-widget">
                         <div class="media">
                             <a class="media-left" href="#">
-                                <img src="assets/img/avatars/profile_avatar.jpg" class="img-responsive">
+                                <img src="/assets/img/avatars/profile_avatar.jpg" class="img-responsive">
                             </a>
 
                             <div class="media-body">
+                                <div class="media-author"><?= $UserName ?></div>
+
                                 <div class="media-links">
-                                    <a href="#" class="sidebar-menu-toggle">User Menu -</a> <a href="utility-login.html">Logout</a>
+                                    <a href="<?= base_url('/logout') ?>">Logout</a>
                                 </div>
-                                <div class="media-author">Douglas Adams</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- -------------- Sidebar - Author Menu  -------------- -->
-                    <div class="sidebar-widget menu-widget">
-                        <div class="row text-center mbn">
-                            <div class="col-xs-2 pln prn">
-                                <a href="<?= base_url('/student') ?>" class="text-primary" data-toggle="tooltip" data-placement="top" title="Dashboard">
-                                    <span class="fa fa-dashboard"></span>
-                                </a>
-                            </div>
-                            <div class="col-xs-4 col-sm-2 pln prn">
-                                <a href="charts-highcharts.html" class="text-info" data-toggle="tooltip" data-placement="top" title="Stats">
-                                    <span class="fa fa-bar-chart-o"></span>
-                                </a>
-                            </div>
-                            <div class="col-xs-4 col-sm-2 pln prn">
-                                <a href="sales-stats-products.html" class="text-system" data-toggle="tooltip" data-placement="top" title="Orders">
-                                    <span class="fa fa-info-circle"></span>
-                                </a>
-                            </div>
-                            <div class="col-xs-4 col-sm-2 pln prn">
-                                <a href="sales-stats-purchases.html" class="text-warning" data-toggle="tooltip" data-placement="top" title="Invoices">
-                                    <span class="fa fa-file"></span>
-                                </a>
-                            </div>
-                            <div class="col-xs-4 col-sm-2 pln prn">
-                                <a href="basic-profile.html" class="text-alert" data-toggle="tooltip" data-placement="top" title="Users">
-                                    <span class="fa fa-users"></span>
-                                </a>
-                            </div>
-                            <div class="col-xs-4 col-sm-2 pln prn">
-                                <a href="management-tools-dock.html" class="text-danger" data-toggle="tooltip" data-placement="top" title="Settings">
-                                    <span class="fa fa-cogs"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+
 
                 </header>
                 <!-- -------------- /Sidebar Header -------------- -->
@@ -713,402 +676,45 @@
                     <li class="sidebar-label pt25">Tools</li>
                     <li>
                         <a class="accordion-toggle" href="#">
-                            <span class="fa fa-share-square-o"></span>
-                            <span class="sidebar-title">Sales stats</span>
-                            <span class="caret"></span>
+                            <span class="fa fa-file-text-o"></span>
+                            <span class="sidebar-title">My Courses</span>
                         </a>
-                       
+
                     </li>
 
 
-                    <li>
-                        <a class="accordion-toggle" href="#">
-                            <span class="fa fa-desktop"></span>
-                            <span class="sidebar-title">Layout Templates</span>
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="nav sub-nav">
-                            <li>
-                                <a class="accordion-toggle" href="#">
-                                    <span class="fa fa fa-arrows-h"></span>
-                                    Sidebars
-                                    <span class="caret"></span>
-                                </a>
-                                
-                            </li>
-                            <li>
-                                <a class="accordion-toggle" href="#">
-                                    <span class="fa fa-arrows-v"></span>
-                                    Navigation
-                                    <span class="caret"></span>
-                                </a>
-                                
-                            </li>
-                            <li>
-                                <a class="accordion-toggle" href="#">
-                                    <span class="fa fa-hand-o-up"></span>
-                                    Top Panel
-                                    <span class="caret"></span>
-                                </a>
-                                
-                            </li>
-                            <li>
-                                <a class="accordion-toggle" href="#">
-                                    <span class="fa fa-arrows-v"></span>
-                                    Content
-                                    <span class="caret"></span>
-                                </a>
-                                
-                            </li>
-                            <li>
-                                <a class="accordion-toggle" href="#">
-                                    <span class="fa fa-pause"></span>
-                                    Content Chutes
-                                    <span class="caret"></span>
-                                </a>
-                                
-                            </li>
-                            <li>
-                                <a class="accordion-toggle" href="#">
-                                    <span class="fa fa-arrow-circle-o-up"></span>
-                                    Horizontal Navigation
-                                    <span class="caret"></span>
-                                </a>
-                                
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="accordion-toggle" href="#">
-                            <span class="fa fa-wrench"></span>
-                            <span class="sidebar-title">Management Tools</span>
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="nav sub-nav">
-                            <li>
-                                <a href="management-tools-panels.html">
-                                    <span class="glyphicon glyphicon-book"></span> Panels </a>
-                            </li>
-                            <li>
-                                <a href="management-tools-modals.html">
-                                    <span class="glyphicon glyphicon-modal-window"></span> Modals </a>
-                            </li>
-                            <li>
-                                <a href="management-tools-dock.html">
-                                    <span class="glyphicon glyphicon-equalizer"></span> Dock </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="accordion-toggle" href="#">
-                            <span class="fa fa-check-square-o"></span>
-                            <span class="sidebar-title">Forms</span>
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="nav sub-nav">
-                            <li>
-                                <a href="forms-elements.html">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span> Elements </a>
-                            </li>
-                            <li>
-                                <a href="forms-widgets.html">
-                                    <span class="glyphicon glyphicon-calendar"></span> Widgets </a>
-                            </li>
-                            <li>
-                                <a href="forms-layouts.html">
-                                    <span class="fa fa-desktop"></span> Layouts </a>
-                            </li>
-                            <li>
-                                <a href="forms-wizard.html">
-                                    <span class="fa fa-clipboard"></span> Wizard </a>
-                            </li>
-                            <li>
-                                <a href="forms-validation.html">
-                                    <span class="glyphicon glyphicon-check"></span> Validation </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-label pt30">Elements</li>
-                    <li>
-                        <a class="accordion-toggle" href="#">
-                            <span class="fa fa-cogs"></span>
-                            <span class="sidebar-title">Widgets</span>
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="nav sub-nav">
-                            <li>
-                                <a href="widgets-panels.html">
-                                    <span class="fa fa-desktop"></span> Panels </a>
-                            </li>
-                            <li>
-                                <a href="widgets-scrollers-tiles.html">
-                                    <span class="fa fa-columns"></span> Scrollers &amp; Tiles</a>
-                            </li>
-                            <li>
-                                <a href="widgets-tools.html">
-                                    <span class="fa fa-dot-circle-o"></span> Tools </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="email-layouts.html">
-                            <span class="fa fa-envelope-o"></span>
-                            <span class="sidebar-title">Email Layouts</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="accordion-toggle" href="#">
-                            <span class="fa fa-star-half-full "></span>
-                            <span class="sidebar-title">User Interface</span>
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="nav sub-nav">
-                            <li>
-                                <a href="user-interface-alerts.html">
-                                    <span class="fa fa-warning"></span> Alerts </a>
-                            </li>
-                            <li>
-                                <a href="user-interface-buttons.html">
-                                    <span class="fa fa-plus-square-o"></span> Buttons </a>
-                            </li>
-                            <li>
-                                <a href="user-interface-typography.html">
-                                    <span class="fa fa-text-width"></span> Typography </a>
-                            </li>
-                            <li>
-                                <a href="user-interface-panels.html">
-                                    <span class="fa fa-archive"></span> Panels </a>
-                            </li>
-                            <li>
-                                <a href="user-interface-progress-bars.html">
-                                    <span class="fa fa-bars"></span> Progress Bars </a>
-                            </li>
-                            <li>
-                                <a href="user-interface-tabs.html">
-                                    <span class="fa fa-toggle-off"></span> Tabs </a>
-                            </li>
-                            <li>
-                                <a href="user-interface-icons.html">
-                                    <span class="fa fa-hand-o-right"></span> Icons </a>
-                            </li>
-                            <li>
-                                <a href="user-interface-grid.html">
-                                    <span class="fa fa-th-large"></span> Grid </a>
-                            </li>
-                            <li>
-                                <a href="user-interface-progress-loader.html">
-                                    <span class="fa fa-th-large"></span> Page Progress Loader </a>
-                            </li>
-                        </ul>
-                    </li>
                     <li>
                         <a class="accordion-toggle" href="#">
                             <span class="fa fa-tasks"></span>
-                            <span class="sidebar-title">User Forms</span>
-                            <span class="caret"></span>
+                            <span class="sidebar-title">My Assignments</span>
                         </a>
-                        <ul class="nav sub-nav">
-                            <li>
-                                <a href="user-forms-standart-inputs.html">
-                                    <span class="fa fa-magic"></span> Standart Inputs </a>
-                            </li>
-                            <li>
-                                <a href="user-forms-additional-inputs.html">
-                                    <span class="fa fa-bell-o"></span> Additional Inputs
-                                </a>
-                            </li>
-                            <li>
-                                <a href="user-forms-editors.html">
-                                    <span class="fa fa-clipboard"></span> Editors </a>
-                            </li>
-                            <li>
-                                <a href="user-forms-treeview.html">
-                                    <span class="fa fa-tree"></span> Treeview </a>
-                            </li>
-                            <li>
-                                <a href="user-forms-nestable.html">
-                                    <span class="fa fa-tasks"></span> Nestable </a>
-                            </li>
-                            <li>
-                                <a href="user-forms-image-tools.html">
-                                    <span class="fa fa-cloud-upload"></span> Image Tools
-                                </a>
-                            </li>
-                            <li>
-                                <a href="user-forms-file-uploaders.html">
-                                    <span class="fa fa-cloud-upload"></span> File Uploaders </a>
-                            </li>
-                            <li>
-                                <a href="user-forms-notifications.html">
-                                    <span class="fa fa-bell-o"></span> Notifications </a>
-                            </li>
-                            <li>
-                                <a href="user-forms-content-sliders.html">
-                                    <span class="fa fa-exchange"></span> Content Sliders </a>
-                            </li>
-                        </ul>
+
+                    </li>
+
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="fa fa-pencil-square-o"></span>
+                            <span class="sidebar-title">Exams</span>
+                        </a>
+
+                    </li>
+
+                    <li>
+                        <a class="accordion-toggle" href="#">
+                            <span class="fa fa-file"></span>
+                            <span class="sidebar-title">Reports</span>
+                        </a>
+
                     </li>
                     <li>
                         <a class="accordion-toggle" href="#">
-                            <span class="fa fa-crop"></span>
-                            <span class="sidebar-title">Plugins</span>
-                            <span class="caret"></span>
+                            <span class="fa fa-cog"></span>
+                            <span class="sidebar-title">Setting</span>
                         </a>
-                        <ul class="nav sub-nav">
-                            <li>
-                                <a class="accordion-toggle" href="#">
-                                    <span class="glyphicon glyphicon-globe"></span> Maps
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="nav sub-nav">
-                                    <li>
-                                        <a href="maps-basic.html">Basic</a>
-                                    </li>
-                                    <li>
-                                        <a href="maps-vector.html">Vector</a>
-                                    </li>
-                                    <li>
-                                        <a href="maps-full.html">Full</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="accordion-toggle" href="#">
-                                    <span class="fa fa-area-chart"></span> Charts
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="nav sub-nav">
-                                    <li>
-                                        <a href="charts-highcharts.html">Highcharts</a>
-                                    </li>
-                                    <li>
-                                        <a href="charts-d3.html">D3 Charts</a>
-                                    </li>
-                                    <li>
-                                        <a href="charts-flot.html">Flot Charts</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="accordion-toggle" href="#">
-                                    <span class="fa fa-table"></span> Tables
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="nav sub-nav">
-                                    <li>
-                                        <a href="tables-basic.html"> Basic </a>
-                                    </li>
-                                    <li>
-                                        <a href="tables-datatables.html"> Data </a>
-                                    </li>
-                                    <li>
-                                        <a href="tables-sortable.html"> Sortable </a>
-                                    </li>
-                                    <li>
-                                        <a href="tables-pricing.html"> Pricing </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="accordion-toggle" href="#">
-                            <span class="fa fa-file-text-o"></span>
-                            <span class="sidebar-title">Pages</span>
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="nav sub-nav">
-                            <li>
-                                <a class="accordion-toggle" href="#">
-                                    <span class="fa fa-gears"></span> Utility
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="nav sub-nav">
-                                    <li>
-                                        <a href="utility-confirmation.html" target="_blank"> Confirmation </a>
-                                    </li>
-                                    <li>
-                                        <a href="utility-login.html" target="_blank"> Login </a>
-                                    </li>
-                                    <li>
-                                        <a href="utility-register.html" target="_blank"> Register </a>
-                                    </li>
-                                    <li>
-                                        <a href="utility-forgot-password.html" target="_blank"> Forgot Password </a>
-                                    </li>
-                                    <li>
-                                        <a href="utility-coming-soon.html" target="_blank"> Coming Soon
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="utility-404-error.html"> 404 Error </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="accordion-toggle" href="#">
-                                    <span class="fa fa-desktop"></span> Basic
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="nav sub-nav">
-                                    <li>
-                                        <a href="basic-search-results.html">Search Results </a>
-                                    </li>
-                                    <li>
-                                        <a href="basic-profile.html"> Profile </a>
-                                    </li>
-                                    <li>
-                                        <a href="basic-timeline.html"> Timeline </a>
-                                    </li>
-                                    <li>
-                                        <a href="basic-faq-page.html"> FAQ Page </a>
-                                    </li>
-                                    <li>
-                                        <a href="basic-calendar.html"> Calendar </a>
-                                    </li>
-                                    <li>
-                                        <a href="basic-messages.html"> Messages </a>
-                                    </li>
-                                    <li>
-                                        <a href="basic-gallery.html"> Gallery </a>
-                                    </li>
-                                    <li>
-                                        <a href="basic-invoice.html"> Invoice </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+
                     </li>
 
 
-                    <li>
-                        <a href="doc/index.html">
-                            <span class="fa fa-book"></span>
-                            <span class="sidebar-title">Documentation</span>
-                        </a>
-                    </li>
-
-                    <!-- -------------- Sidebar Progress Bars -------------- -->
-                    <li class="sidebar-label pt25 pb15">Stats</li>
-                    <li class="sidebar-stat">
-                        <a href="#" class="fs11">
-                            <span class="fa fa-calendar-o text-info"></span>
-                            <span class="sidebar-title text-muted">September earnings</span>
-                            <span class="pull-right mr20 text-muted">$1158</span>
-
-                            <div id="high-column4" style="height: 150px;"></div>
-                        </a>
-                    </li>
-                    <li class="sidebar-stat">
-                        <a href="#" class="fs11">
-                            <span class="fa fa-calendar text-info"></span>
-                            <span class="sidebar-title text-muted">August earnings</span>
-                            <span class="pull-right mr20 text-muted">$1001</span>
-
-                            <div id="high-column5" style="height: 150px;"></div>
-                        </a>
-                    </li>
                 </ul>
                 <!-- -------------- /Sidebar Menu  -------------- -->
 
@@ -1130,46 +736,7 @@
         <section id="content_wrapper">
 
             <!-- -------------- Topbar Menu Wrapper -------------- -->
-            <div id="topbar-dropmenu-wrapper">
-                <div class="topbar-menu row">
-                    <div class="col-xs-4 col-sm-2">
-                        <a href="#" class="service-box bg-danger">
-                            <span class="fa fa-music"></span>
-                            <span class="service-title">Audio</span>
-                        </a>
-                    </div>
-                    <div class="col-xs-4 col-sm-2">
-                        <a href="#" class="service-box bg-success">
-                            <span class="fa fa-picture-o"></span>
-                            <span class="service-title">Images</span>
-                        </a>
-                    </div>
-                    <div class="col-xs-4 col-sm-2">
-                        <a href="#" class="service-box bg-primary">
-                            <span class="fa fa-video-camera"></span>
-                            <span class="service-title">Videos</span>
-                        </a>
-                    </div>
-                    <div class="col-xs-4 col-sm-2">
-                        <a href="#" class="service-box bg-alert">
-                            <span class="fa fa-envelope"></span>
-                            <span class="service-title">Messages</span>
-                        </a>
-                    </div>
-                    <div class="col-xs-4 col-sm-2">
-                        <a href="#" class="service-box bg-system">
-                            <span class="fa fa-cog"></span>
-                            <span class="service-title">Settings</span>
-                        </a>
-                    </div>
-                    <div class="col-xs-4 col-sm-2">
-                        <a href="#" class="service-box bg-dark">
-                            <span class="fa fa-user"></span>
-                            <span class="service-title">Users</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+
             <!-- -------------- /Topbar Menu Wrapper -------------- -->
 
             <!-- -------------- Topbar -------------- -->
@@ -1225,7 +792,7 @@
                             <div class="panel panel-tile">
                                 <div class="panel-body ">
                                     <div class="row pv10">
-                                        <div class="col-xs-5 ph10"><img src="assets/img/pages/clipart0.png" class="img-responsive mauto" alt="" /></div>
+                                        <div class="col-xs-5 ph10"><img src="/assets/img/pages/clipart0.png" class="img-responsive mauto" alt="" /></div>
                                         <div class="col-xs-7 pl5">
                                             <h6 class="text-muted">No Of Cources</h6>
 
@@ -1239,7 +806,7 @@
                             <div class="panel panel-tile">
                                 <div class="panel-body">
                                     <div class="row pv10">
-                                        <div class="col-xs-5 ph10"><img src="assets/img/pages/clipart1.png" class="img-responsive mauto" alt="" /></div>
+                                        <div class="col-xs-5 ph10"><img src="/assets/img/pages/clipart1.png" class="img-responsive mauto" alt="" /></div>
                                         <div class="col-xs-7 pl5">
                                             <h6 class="text-muted">SEMESTER</h6>
 
@@ -1253,7 +820,7 @@
                             <div class="panel panel-tile">
                                 <div class="panel-body">
                                     <div class="row pv10">
-                                        <div class="col-xs-5 ph10"><img src="assets/img/pages/clipart2.png" class="img-responsive mauto" alt="" /></div>
+                                        <div class="col-xs-5 ph10"><img src="/assets/img/pages/clipart2.png" class="img-responsive mauto" alt="" /></div>
                                         <div class="col-xs-7 pl5">
                                             <h6 class="text-muted">Attendance</h6>
 
@@ -1267,7 +834,7 @@
                             <div class="panel panel-tile">
                                 <div class="panel-body ">
                                     <div class="row pv10">
-                                        <div class="col-xs-5 ph10"><img src="assets/img/pages/clipart3.png" class="img-responsive mauto" alt="" /></div>
+                                        <div class="col-xs-5 ph10"><img src="/assets/img/pages/clipart3.png" class="img-responsive mauto" alt="" /></div>
                                         <div class="col-xs-7 pl5">
                                             <h6 class="text-muted">Perfomance</h6>
 
@@ -1280,32 +847,22 @@
                     </div>
 
                     <!-- -------------- AllCP Info -------------- -->
-                    <div class="allcp-panels fade-onload">
-
+                    
                         <div class="row">
 
-                            <!-- -------------- AllCP Grid -------------- -->
                             <div class="col-md-6 allcp-grid">
-                               
+
                                 <div class="panel mb50 upcoming-lec" id="p5" data-panel-remove="false" data-panel-color="false" data-panel-fullscreen="false" data-panel-title="false" data-panel-collapse="false" style="position: relative; opacity: 1; left: 0px; top: 0px;">
                                     <div class="heading">
-                                         <h4>Upcoming Lectures</h4>
+                                        <h4>Upcoming Lectures</h4>
                                     </div>
                                     <div class="panel-body mtn p1">
-                                        
-                                      
-                                           <div class="table-responsive">
+
+
+                                        <div class="table-responsive">
                                             <table class="table table-striped">
-                                                <thead class="bg-primary br6">
-                                                    <tr class="br6">
-                                                        <th class="br-t-l-r6 br-b-n lh25 pl30">SCHEDULE</th>
-                                                        <th class="br-b-n"></th>
-                                                        <th class="br-b-n"></th>
-                                                        <th class="br-b-n"></th>
-                                                        <th class="br-t-r-r6 br-b-n"></th>
-                                                    </tr>
-                                                </thead>
-                                                <thead class="bg-dark">
+
+                                                <thead class="bg-info">
                                                     <tr>
                                                         <th class="br-t-n pl0">no</th>
                                                         <th class="br-t-n hidden-xs">Subject</th>
@@ -1343,731 +900,118 @@
                                                         <td>9am - 10am</td>
                                                         <td><a class="label label-success ml5">Done</a></td>
                                                     </tr>
-                                                   
+
                                                 </tbody>
                                             </table>
-                                        </div> 
-                                        
-                                    </div>
-                                </div>
-
-                                
-                            </div>
-                            <!-- -------------- /AllCP Grid -------------- -->
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <!-- -------------- Poll -------------- -->
-                                <div class="panel" id="spy1">
-                                    <div class="panel-heading">
-                                        <span class="panel-title">Poll</span>
-                                    </div>
-                                    <div class="panel-body p20 br-a br6">
-
-                                        <div id="donut-chart1" style="height: 350px; width: 100%;"></div>
-
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="radio-custom mb5 radio-danger">
-                                            <input type="radio" id="browser1" name="radioExample">
-                                            <label for="browser1">Option 1: Google Chrome</label>
                                         </div>
-                                        <div class="radio-custom mb5 radio-success">
-                                            <input type="radio" id="browser2" name="radioExample">
-                                            <label for="browser2">Option 2: Mozilla FireFox</label>
-                                        </div>
-                                        <div class="radio-custom mb5 radio-primary">
-                                            <input type="radio" id="browser3" name="radioExample">
-                                            <label for="browser3">Option 3: Microsoft IE</label>
-                                        </div>
-                                        <div class="mt20">
-                                            <div class="btn btn-primary btn-lg mr20 mb5">VOTE</div>
-                                            <div class="btn btn-default btn-lg mb5">Hide result</div>
-                                        </div>
-                                    </div>
 
-                                </div>
-
-                                <!-- -------------- Task-list -------------- -->
-                                <div class="panel panel-widget task-widget sort-disable" id="spy11">
-                                    <div class="panel-heading cursor">
-                                        <span class="panel-title"> Task-List Widget</span>
-                                    </div>
-                                    <div class="panel-body pn br-t">
-
-                                        <h6 class="fs14 mv20"><i class="fa fa-bell text-alert mr15"></i><span class="text-muted">PERSONAL TASKS</span></h6>
-                                        <ul class="task-list task-current mb40">
-                                            <li class="task-item success">
-                                                <div class="task-handle">
-                                                    <div class="checkbox-custom">
-                                                        <input type="checkbox" id="task0">
-                                                        <label for="task0"></label>
-                                                    </div>
-                                                </div>
-                                                <div class="task-desc">Remove announcement</div>
-                                                <div class="task-menu"></div>
-                                            </li>
-                                            <li class="task-item danger">
-                                                <div class="task-handle">
-                                                    <div class="checkbox-custom">
-                                                        <input type="checkbox" id="task1">
-                                                        <label for="task1"></label>
-                                                    </div>
-                                                </div>
-                                                <div class="task-desc">Post an announcement</div>
-                                                <div class="task-menu"></div>
-                                            </li>
-                                            <li class="task-item primary">
-                                                <div class="task-handle">
-                                                    <div class="checkbox-custom">
-                                                        <input type="checkbox" id="task2">
-                                                        <label for="task2"></label>
-                                                    </div>
-                                                </div>
-                                                <div class="task-desc">Add new products</div>
-                                                <div class="task-menu"></div>
-                                            </li>
-                                            <li class="task-item info">
-                                                <div class="task-handle">
-                                                    <div class="checkbox-custom">
-                                                        <input type="checkbox" id="task3">
-                                                        <label for="task3"></label>
-                                                    </div>
-                                                </div>
-                                                <div class="task-desc">Ban a few users</div>
-                                                <div class="task-menu"></div>
-                                            </li>
-                                            <li class="task-item warning">
-                                                <div class="task-handle">
-                                                    <div class="checkbox-custom">
-                                                        <input type="checkbox" id="task4">
-                                                        <label for="task4"></label>
-                                                    </div>
-                                                </div>
-                                                <div class="task-desc">Clean comments</div>
-                                                <div class="task-menu"></div>
-                                            </li>
-                                        </ul>
-
-                                        <h6 class="fs14 mb20"><i class="fa fa-check-square-o text-success mr15"></i><span class="text-muted">COMPLETE TASKS</span></h6>
-                                        <ul class="task-list task-completed">
-                                            <li class="task-item danger item-checked">
-                                                <div class="task-handle">
-                                                    <div class="checkbox-custom">
-                                                        <input type="checkbox" checked="" id="task7">
-                                                        <label for="task7"></label>
-                                                    </div>
-                                                </div>
-                                                <div class="task-desc">Add article review</div>
-                                                <div class="task-menu"></div>
-                                            </li>
-                                            <li class="task-item system item-checked">
-                                                <div class="task-handle">
-                                                    <div class="checkbox-custom">
-                                                        <input type="checkbox" checked="" id="task8">
-                                                        <label for="task8"></label>
-                                                    </div>
-                                                </div>
-                                                <div class="task-desc">Add iPad review</div>
-                                                <div class="task-menu"></div>
-                                            </li>
-                                            <li class="task-item item-alert item-checked">
-                                                <div class="task-handle">
-                                                    <div class="checkbox-custom">
-                                                        <input type="checkbox" checked="" id="task9">
-                                                        <label for="task9"></label>
-                                                    </div>
-                                                </div>
-                                                <div class="task-desc">Ban THATuser user</div>
-                                                <div class="task-menu"></div>
-                                            </li>
-                                            <li class="task-item info item-checked">
-                                                <div class="task-handle">
-                                                    <div class="checkbox-custom">
-                                                        <input type="checkbox" checked="" id="task10">
-                                                        <label for="task10"></label>
-                                                    </div>
-                                                </div>
-                                                <div class="task-desc">Create new pages</div>
-                                                <div class="task-menu"></div>
-                                            </li>
-                                            <li class="task-item info item-checked">
-                                                <div class="task-handle">
-                                                    <div class="checkbox-custom">
-                                                        <input type="checkbox" checked="" id="task11">
-                                                        <label for="task10"></label>
-                                                    </div>
-                                                </div>
-                                                <div class="task-desc">Remove old pages</div>
-                                                <div class="task-menu"></div>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-
-                                <!-- -------------- Crawler-list -------------- -->
-                                <div class="panel" id="spy2">
-                                    <div class="panel-heading">
-                                        <span class="panel-title">Crawler List</span>
-                                    </div>
-                                    <div class="panel-body panel-scroller scroller-primary scroller-md scroller-pn pn">
-                                        <table class="table mbn tc-icon-bold br-t">
-                                            <thead>
-                                                <tr class="hidden">
-                                                    <th>#</th>
-                                                    <th>First Name</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm google va-t mr10"></span>Google Bot
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm bing va-t mr10"></span>Bing Bot
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm yahoo va-t mr10"></span>Yahoo Bot
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm google va-t mr10"></span>Google Bot
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm bing va-t mr10"></span>Bing Bot
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm yahoo va-t mr10"></span>Yahoo Bot
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm google va-t mr10"></span>Google Bot
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm bing va-t mr10"></span>Bing Bot
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm yahoo va-t mr10"></span>Yahoo Bot
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm google va-t mr10"></span>Google Bot
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm bing va-t mr10"></span>Bing Bot
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm yahoo va-t mr10"></span>Yahoo Bot
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
                                     </div>
                                 </div>
 
-                                <!-- -------------- Browser-list -------------- -->
-                                <div class="panel" id="spy3">
-                                    <div class="panel-heading">
-                                        <span class="panel-title">Browser List</span>
-                                    </div>
-                                    <div class="panel-body panel-scroller scroller-md scroller-primary scroller-pn pn">
-                                        <table class="table mbn tc-icon-bold br-t">
-                                            <thead>
-                                                <tr class="hidden">
-                                                    <th>#</th>
-                                                    <th>First Name</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm chrome va-t mr10"></span>Chrome
-                                                    </td>
-                                                    <td>50%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm firefox va-t mr10"></span>Firefox
-                                                    </td>
-                                                    <td>25%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm ie va-t mr10"></span>Internet Explorer
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm safari va-t mr10"></span>Safari
-                                                    </td>
-                                                    <td>5%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm chrome va-t mr10"></span>Chrome
-                                                    </td>
-                                                    <td>50%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm firefox va-t mr10"></span>Firefox
-                                                    </td>
-                                                    <td>25%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm ie va-t mr10"></span>Internet Explorer
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm safari va-t mr10"></span>Safari
-                                                    </td>
-                                                    <td>5%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm chrome va-t mr10"></span>Chrome
-                                                    </td>
-                                                    <td>50%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm firefox va-t mr10"></span>Firefox
-                                                    </td>
-                                                    <td>25%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm ie va-t mr10"></span>Internet Explorer
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="favicons-sm safari va-t mr10"></span>Safari
-                                                    </td>
-                                                    <td>5%</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <!-- -------------- Visitors Graph -------------- -->
-                                <div class="panel" id="spy4">
-                                    <div class="panel-heading">
-                                        <span class="panel-title">Visitors Graph Widget</span>
-                                    </div>
-                                    <div class="panel-body pn">
-                                        <table class="table mbn tc-icon-bold br-t">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="va-m fw600 text-muted">
-                                                        <span class="fa fa-circle text-success fs14 mr10"></span>Google
-                                                    </td>
-                                                    <td class="fs15 fw600 text-right">45%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="va-m fw600 text-muted">
-                                                        <span class="fa fa-circle text-warning fs14 mr10"></span>Bing
-                                                    </td>
-                                                    <td class="fs15 fw600 text-right">33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="va-m fw600 text-muted">
-                                                        <span class="fa fa-circle text-primary fs14 mr10"></span>Twitter
-                                                    </td>
-                                                    <td class="fs15 fw600 text-right">18%</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                    <div class="panel-body">
-                                        <div id="high-area2" style="height: 200px; width: 100%;"></div>
-                                    </div>
-                                </div>
 
                             </div>
+                            <div class="col-md-6 allcp-grid">
 
-                            <div class="col-md-6">
-
-                                <!-- -------------- Server Status -------------- -->
-                                <div class="panel" id="spy5">
-                                    <div class="panel-heading">
-                                        <span class="panel-title">Server Status</span>
+                                <div class="panel mb50 upcoming-lec" id="p5" data-panel-remove="false" data-panel-color="false" data-panel-fullscreen="false" data-panel-title="false" data-panel-collapse="false" style="position: relative; opacity: 1; left: 0px; top: 0px;">
+                                    <div class="heading">
+                                        <h4>Pending Assignments</h4>
                                     </div>
-                                    <div class="panel-body pn">
-                                        <div class="progress progress-bar-xl br4">
-                                            <div class="progress-bar progress-bar-system" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 55%;">
-                                                <span class="pull-left ph10">Memory Used</span>
-                                                <span class="pull-right ph10">55%</span>
-                                            </div>
-                                        </div>
-                                        <div class="progress progress-bar-xl br4">
-                                            <div class="progress-bar progress-bar-system" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                                <span class="pull-left ph10">Disk dev/sda1</span>
-                                                <span class="pull-right ph10">60%</span>
-                                            </div>
-                                        </div>
-                                        <div class="progress progress-bar-xl br4">
-                                            <div class="progress-bar progress-bar-system" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
-                                                <span class="pull-left ph10">Disk dev/sda2</span>
-                                                <span class="pull-right ph10">80%</span>
-                                            </div>
-                                        </div>
-                                        <div class="progress progress-bar-xl br4">
-                                            <div class="progress-bar progress-bar-system" role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
-                                                <span class="pull-left ph10">Disk dev/sda3</span>
-                                                <span class="pull-right ph10">66%</span>
-                                            </div>
-                                        </div>
-                                        <div class="progress progress-bar-xl br4">
-                                            <div class="progress-bar progress-bar-system" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
-                                                <span class="pull-left ph10">Disk dev/sda4</span>
-                                                <span class="pull-right ph10">45%</span>
-                                            </div>
-                                        </div>
-                                        <div class="progress progress-bar-xl br4">
-                                            <div class="progress-bar progress-bar-system" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%;">
-                                                <span class="pull-left ph10">Disk dev/sda5</span>
-                                                <span class="pull-right ph10">78%</span>
-                                            </div>
-                                        </div>
+                                    <div class="panel-body mtn p1">
 
-                                        <p class="">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-                                            molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p>
+
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead class="bg-dark">
+                                                    <tr>
+                                                        <th class="br-t-n pl0">no</th>
+                                                        <th class="br-t-n hidden-xs">title</th>
+                                                        <th class="br-t-n">subject</th>
+                                                        <th class="br-t-n">last date</th>
+                                                        <th class="br-t-n">status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="pl0">#1</td>
+                                                        <td class="hidden-xs">ADA</td>
+                                                        <td>prof. jenil</td>
+                                                        <td>9am - 10am</td>
+                                                        <td><a class="label label-success ml5">Done</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="pl0">#2</td>
+                                                        <td class="hidden-xs">ADA</td>
+                                                        <td>prof. jenil</td>
+                                                        <td>9am - 10am</td>
+                                                        <td><a class="label label-danger ml5">Done</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="pl0">#3</td>
+                                                        <td class="hidden-xs">ADA</td>
+                                                        <td>prof. jenil</td>
+                                                        <td>9am - 10am</td>
+                                                        <td><a class="label label-info ml5">Done</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="pl0">#4</td>
+                                                        <td class="hidden-xs">ADA</td>
+                                                        <td>prof. jenil</td>
+                                                        <td>9am - 10am</td>
+                                                        <td><a class="label label-success ml5">Done</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="pl0">#4</td>
+                                                        <td class="hidden-xs">ADA</td>
+                                                        <td>prof. jenil</td>
+                                                        <td>9am - 10am</td>
+                                                        <td><a class="label label-success ml5">Done</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="pl0">#4</td>
+                                                        <td class="hidden-xs">ADA</td>
+                                                        <td>prof. jenil</td>
+                                                        <td>9am - 10am</td>
+                                                        <td><a class="label label-success ml5">Done</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="pl0">#4</td>
+                                                        <td class="hidden-xs">ADA</td>
+                                                        <td>prof. jenil</td>
+                                                        <td>9am - 10am</td>
+                                                        <td><a class="label label-success ml5">Done</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="pl0">#4</td>
+                                                        <td class="hidden-xs">ADA</td>
+                                                        <td>prof. jenil</td>
+                                                        <td>9am - 10am</td>
+                                                        <td><a class="label label-success ml5">Done</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="pl0">#4</td>
+                                                        <td class="hidden-xs">ADA</td>
+                                                        <td>prof. jenil</td>
+                                                        <td>9am - 10am</td>
+                                                        <td><a class="label label-success ml5">Done</a></td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
 
                                     </div>
                                 </div>
 
-                                <!-- -------------- User Project List -------------- -->
-                                <div class="panel" id="spy6">
-                                    <div class="panel-heading">
-                                        <span class="panel-title">User Project List</span>
-                                    </div>
-                                    <div class="panel-body pn">
-                                        <div class="bs-component">
-                                            <div class="table-responsive">
-                                                <table class="table table-striped">
-                                                    <thead class="bg-primary br6">
-                                                        <tr class="br6">
-                                                            <th class="br-t-l-r6 br-b-n lh25 pl30">SCHEDULE</th>
-                                                            <th class="br-b-n"></th>
-                                                            <th class="br-b-n"></th>
-                                                            <th class="br-t-r-r6 br-b-n"></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <thead class="bg-dark">
-                                                        <tr>
-                                                            <th class="br-t-n pl30">Project</th>
-                                                            <th class="br-t-n hidden-xs">Start Date</th>
-                                                            <th class="br-t-n">Deadline</th>
-                                                            <th class="br-t-n">Status</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="pl30">#4551</td>
-                                                            <td class="hidden-xs">Oct 10, 2014</td>
-                                                            <td>Oct 10, 2015</td>
-                                                            <td><span class="label label-success ml5">Done</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="pl30">#4532</td>
-                                                            <td class="hidden-xs">Oct 10, 2013</td>
-                                                            <td>Oct 10, 2014</td>
-                                                            <td><span class="label label-danger ml5">Failed</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="pl30">#4853</td>
-                                                            <td class="hidden-xs">Oct 10, 2015</td>
-                                                            <td>Oct 10, 2016</td>
-                                                            <td><span class="label label-primary ml5">In Progress</span></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="pl30">#5564</td>
-                                                            <td class="hidden-xs">Oct 10, 2014</td>
-                                                            <td>Oct 10, 2015</td>
-                                                            <td><span class="label label-success ml5">Done</span></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- -------------- Traphic Sources -------------- -->
-                                <div class="panel" id="spy7">
-                                    <div class="panel-heading">
-                                        <span class="panel-title">Traphic Sources</span>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-sm-4 text-center p5">
-                                                <div class="info-circle  va-m" id="c1" value="55" data-circle-color="primary"></div>
-                                                <div class="text-dark fw600">Google</div>
-                                            </div>
-                                            <div class="col-sm-4 text-center p5">
-                                                <div class="info-circle" id="c2" value="15" data-circle-color="primary"></div>
-                                                <div class="text-dark fw600">Bing</div>
-                                            </div>
-                                            <div class="col-sm-4 text-center p5">
-                                                <div class="info-circle" id="c3" value="30" data-circle-color="primary"></div>
-                                                <div class="text-dark fw600">Twitter</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- -------------- Country List -------------- -->
-                                <div class="panel" id="spy8">
-                                    <div class="panel-heading">
-                                        <span class="panel-title">Country List</span>
-                                    </div>
-                                    <div class="panel-body panel-scroller scroller-md scroller-pn pn">
-                                        <table class="table mbn tc-icon-bold br-t">
-                                            <thead>
-                                                <tr class="hidden">
-                                                    <th>#</th>
-                                                    <th>First Name</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <span class="flag-sm flag-mx mr5 va-b"></span>Mexico
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="flag-sm flag-gb mr5 va-b"></span> Great Britain
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="flag-sm flag-ca mr5 va-b"></span>Canada
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="flag-sm flag-us mr5 va-b"></span>United States
-                                                    </td>
-                                                    <td>31%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="flag-sm flag-cn mr5 va-b"></span> China
-                                                    </td>
-                                                    <td>22%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="flag-sm flag-mx mr5 va-b"></span>Mexico
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="flag-sm flag-gb mr5 va-b"></span> Great Britain
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="flag-sm flag-ca mr5 va-b"></span>Canada
-                                                    </td>
-                                                    <td>33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="flag-sm flag-us mr5 va-b"></span>United States
-                                                    </td>
-                                                    <td>31%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="flag-sm flag-cn mr5 va-b"></span> China
-                                                    </td>
-                                                    <td>22%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="flag-sm flag-us mr5 va-b"></span>United States
-                                                    </td>
-                                                    <td>31%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="flag-sm flag-cn mr5 va-b"></span> China
-                                                    </td>
-                                                    <td>22%</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <!-- -------------- Traphic Sources -------------- -->
-                                <div class="panel" id="spy9">
-                                    <div class="panel-heading">
-                                        <span class="panel-title">Traphic Sources</span>
-                                    </div>
-                                    <div class="panel-body pn">
-                                        <div class="row table-layout table-clear-sm">
-                                            <div class="col-md-6 va-m pn pr20 pt10">
-                                                <div class="progress progress-bar-xl mt50 mb35">
-                                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 55%;">
-                                                        <span>Google</span>
-                                                    </div>
-                                                </div>
-                                                <div class="progress progress-bar-xl mb35">
-                                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 15%;">
-                                                        <span>Bing</span>
-                                                    </div>
-                                                </div>
-                                                <div class="progress progress-bar-xl">
-                                                    <div class="progress-bar progress-bar-alert" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
-                                                        <span>Twitter</span>
-                                                    </div>
-                                                </div>
-
-
-                                            </div>
-                                            <div class="col-md-6 pn">
-                                                <div class="allcp-form">
-                                                    <!-- -------------- Block Widget -------------- -->
-                                                    <div class="smart-widget sm-right smr-50">
-                                                        <label class="field">
-                                                            <input type="text" name="sub" id="sub" class="gui-input br-n br-b" placeholder="Add Data Source">
-                                                        </label>
-                                                        <button type="submit" class="button br-n br-b br-l">
-                                                            <i class="fa fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <table class="table mbn tc-icon-bold">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <span class="fa fa-circle text-warning fs14 mr10"></span>Google
-                                                            </td>
-                                                            <td>55%</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <span class="fa fa-circle text-info fs14 mr10"></span>Bing
-                                                            </td>
-                                                            <td>15%</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <span class="fa fa-circle text-alert fs14 mr10"></span>Twitter
-                                                            </td>
-                                                            <td>30%</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- -------------- Visitor Geography -------------- -->
-                                <div class="panel" id="spy10">
-                                    <div class="panel-heading">
-                                        <span class="panel-title">Visitor Geography</span>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div id="WidgetMap" class="jvector-colors hide-jzoom" style="width: 100%; height: 220px;"></div>
-                                    </div>
-                                    <div class="panel-menu allcp-form pn br-t">
-                                        <!-- -------------- Block Widget -------------- -->
-                                        <div class="smart-widget sm-right smr-50">
-                                            <label class="field">
-                                                <input type="text" name="sub1" id="sub1" class="gui-input br-n" placeholder="United States of America" disabled>
-                                            </label>
-                                            <button type="submit" class="button br-n br-l">
-                                                <i class="fa fa-caret-down"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="panel-body pn">
-                                        <table class="table mbn tc-icon-bold br-t">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="va-m fw600 text-muted">
-                                                        <span class="fa fa-circle text-success fs14 mr10"></span>California
-                                                    </td>
-                                                    <td class="fs15 fw600 text-right">45%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="va-m fw600 text-muted">
-                                                        <span class="fa fa-circle text-warning fs14 mr10"></span>Texas
-                                                    </td>
-                                                    <td class="fs15 fw600 text-right">33%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="va-m fw600 text-muted">
-                                                        <span class="fa fa-circle text-primary fs14 mr10"></span>Florida
-                                                    </td>
-                                                    <td class="fs15 fw600 text-right">18%</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
 
                             </div>
-                            <!-- -------------- /.col-md-6 -------------- -->
-
-
                         </div>
 
 
-                    </div>
 
+
+                    
+
+                   
 
                 </div>
                 <!-- -------------- /Column Center -------------- -->
@@ -2242,80 +1186,7 @@
         <!-- -------------- /Main Wrapper -------------- -->
 
         <!-- -------------- Sidebar Right -------------- -->
-        <aside id="sidebar_right" class="nano affix">
 
-            <!-- -------------- Sidebar Right Content -------------- -->
-            <div class="sidebar-right-wrapper nano-content">
-
-                <div class="sidebar-block br-n p15">
-
-                    <h6 class="title-divider text-muted mb20"> Visitors Stats
-                        <span class="pull-right"> 2015
-                            <i class="fa fa-caret-down ml5"></i>
-                        </span>
-                    </h6>
-
-                    <div class="progress mh5">
-                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100" style="width: 34%">
-                            <span class="fs11">New visitors</span>
-                        </div>
-                    </div>
-                    <div class="progress mh5">
-                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100" style="width: 66%">
-                            <span class="fs11 text-left">Returnig visitors</span>
-                        </div>
-                    </div>
-                    <div class="progress mh5">
-                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-                            <span class="fs11 text-left">Orders</span>
-                        </div>
-                    </div>
-
-                    <h6 class="title-divider text-muted mt30 mb10">New visitors</h6>
-
-                    <div class="row">
-                        <div class="col-xs-5">
-                            <h3 class="text-primary mn pl5">350</h3>
-                        </div>
-                        <div class="col-xs-7 text-right">
-                            <h3 class="text-warning mn">
-                                <i class="fa fa-caret-down"></i> 15.7%
-                            </h3>
-                        </div>
-                    </div>
-
-                    <h6 class="title-divider text-muted mt25 mb10">Returnig visitors</h6>
-
-                    <div class="row">
-                        <div class="col-xs-5">
-                            <h3 class="text-primary mn pl5">660</h3>
-                        </div>
-                        <div class="col-xs-7 text-right">
-                            <h3 class="text-success-dark mn">
-                                <i class="fa fa-caret-up"></i> 20.2%
-                            </h3>
-                        </div>
-                    </div>
-
-                    <h6 class="title-divider text-muted mt25 mb10">Orders</h6>
-
-                    <div class="row">
-                        <div class="col-xs-5">
-                            <h3 class="text-primary mn pl5">153</h3>
-                        </div>
-                        <div class="col-xs-7 text-right">
-                            <h3 class="text-success mn">
-                                <i class="fa fa-caret-up"></i> 5.3%
-                            </h3>
-                        </div>
-                    </div>
-
-                    <h6 class="title-divider text-muted mt40 mb20"> Site Statistics
-                        <span class="pull-right text-primary fw600">Today</span>
-                    </h6>
-                </div>
-            </div>
-        </aside>
         <!-- -------------- /Sidebar Right -------------- -->
 
     </div>
@@ -2324,54 +1195,43 @@
     <!-- -------------- Scripts -------------- -->
 
     <!-- -------------- jQuery -------------- -->
-    <script src="assets/js/jquery/jquery-1.11.3.min.js"></script>
-    <script src="assets/js/jquery/jquery_ui/jquery-ui.min.js"></script>
+    <script src="/assets/js/jquery/jquery-1.11.3.min.js"></script>
+    <script src="/assets/js/jquery/jquery_ui/jquery-ui.min.js"></script>
 
     <!-- -------------- HighCharts Plugin -------------- -->
-    <script src="assets/js/plugins/highcharts/highcharts.js"></script>
-    <script src="assets/js/plugins/c3charts/d3.min.js"></script>
-    <script src="assets/js/plugins/c3charts/c3.min.js"></script>
+    <script src="/assets/js/plugins/highcharts/highcharts.js"></script>
+    <script src="/assets/js/plugins/c3charts/d3.min.js"></script>
+    <script src="/assets/js/plugins/c3charts/c3.min.js"></script>
 
     <!-- -------------- Simple Circles Plugin -------------- -->
-    <script src="assets/js/plugins/circles/circles.js"></script>
+    <script src="/assets/js/plugins/circles/circles.js"></script>
 
     <!-- -------------- Maps JSs -------------- -->
-    <script src="assets/js/plugins/jvectormap/jquery.jvectormap.min.js"></script>
-    <script src="assets/js/plugins/jvectormap/assets/jquery-jvectormap-us-lcc-en.js"></script>
+    <script src="/assets/js/plugins/jvectormap/jquery.jvectormap.min.js"></script>
+    <script src="/assets/js/plugins/jvectormap/assets/jquery-jvectormap-us-lcc-en.js"></script>
 
     <!-- -------------- FullCalendar Plugin -------------- -->
-    <script src="assets/js/plugins/fullcalendar/lib/moment.min.js"></script>
-    <script src="assets/js/plugins/fullcalendar/fullcalendar.min.js"></script>
+    <script src="/assets/js/plugins/fullcalendar/lib/moment.min.js"></script>
+    <script src="/assets/js/plugins/fullcalendar/fullcalendar.min.js"></script>
 
     <!-- -------------- Date/Month - Pickers -------------- -->
-    <script src="assets/allcp/forms/js/jquery-ui-monthpicker.min.js"></script>
-    <script src="assets/allcp/forms/js/jquery-ui-datepicker.min.js"></script>
+    <script src="/assets/allcp/forms/js/jquery-ui-monthpicker.min.js"></script>
+    <script src="/assets/allcp/forms/js/jquery-ui-datepicker.min.js"></script>
 
     <!-- -------------- Magnific Popup Plugin -------------- -->
-    <script src="assets/js/plugins/magnific/jquery.magnific-popup.js"></script>
+    <script src="/assets/js/plugins/magnific/jquery.magnific-popup.js"></script>
 
     <!-- -------------- Theme Scripts -------------- -->
-    <script src="assets/js/utility/utility.js"></script>
-    <script src="assets/js/demo/demo.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="/assets/js/utility/utility.js"></script>
+    <script src="/assets/js/demo/demo.js"></script>
+    <script src="/assets/js/main.js"></script>
 
     <!-- -------------- Widget JS -------------- -->
-    <script src="assets/js/demo/widgets.js"></script>
-    <script src="assets/js/demo/widgets_sidebar.js"></script>
-    <script src="assets/js/pages/dashboard1.js"></script>
+    <script src="/assets/js/demo/widgets.js"></script>
+    <script src="/assets/js/demo/widgets_sidebar.js"></script>
+    <script src="/assets/js/pages/dashboard1.js"></script>
     <!-- -------------- /Scripts -------------- -->
 
 </body>
 
 </html>
-
-
-
-
-<h3>
-    student dashboard
-</h3>
-
-<a href="<?= base_url('/logout') ?>">
-    logout
-</a>

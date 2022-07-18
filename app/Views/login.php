@@ -1,7 +1,6 @@
 
 <?php
-
-
+// var_dump(session()->get('role'));
 $validation = \Config\Services::validation();
 
 
@@ -62,6 +61,14 @@ $validation = \Config\Services::validation();
             z-index: 1;
         }
 
+        .teacher_login{
+        filter: hue-rotate(270deg);    
+        }
+        .admin_login{
+            filter: hue-rotate(45deg);    
+
+        }
+
     </style>
 </head>
 
@@ -70,7 +77,7 @@ $validation = \Config\Services::validation();
 
 
 <!-- -------------- Body Wrap  -------------- -->
-<div id="main" class="animated fadeIn">
+<div id="main" class="animated fadeIn  <?= $role ?>">
     <?php if(session()->getFlashdata('status')==1) {?>
         <div id="SuccessLoginMsg" class="alert alert-sm alert-primary bg-gradient dark alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -106,7 +113,7 @@ $validation = \Config\Services::validation();
                 <div class="text-center mb20"><img src="assets/img/logo_login_form.png" class="img-responsive"
                                                    alt="Logo"/></div>
                 <div class="panel mw320">
-                <?= form_open('/login',"id='form-login'") ?>
+                <?= form_open("/{$role}","id='form-login'") ?>
 
                     <!-- <form method="post" action="/login" id="form-login"> -->
                         <div class="panel-body pn mv10">
